@@ -15,4 +15,4 @@ all: main.cpp resnet.cpp resnet.hpp
 	$(CC) $(CFLAGS) $(OUTPUT) main.cpp resnet.cpp resnet.hpp -lcnpy $(MKL) $(OPENCV) 
 
 clean:
-	rm $(OUTPUT)
+	rm -f $(OUTPUT)
