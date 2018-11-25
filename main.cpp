@@ -6,13 +6,12 @@
 #include "mkl.h"
 #include "resnet.hpp"
 // use pure mkl
-// compiling: my Makefile
+// compile by Makefile
 using namespace std;
 
 void test_resnet(float x_, float y_, float w_, float h_);
-void test_acc();
 
-
+	
 int main(int argc, char* argv[]){
 
 	if(argc < 5){
@@ -24,10 +23,9 @@ int main(int argc, char* argv[]){
 	// some tests
 	init_settings();
 	load_parameter("test.npz", 0);
-	//load_parameter("resnet_data/more.npz", 1);
-	//free_parameter(0);
 
 	test_resnet(::atof(argv[1]), ::atof(argv[2]), ::atof(argv[3]), ::atof(argv[4]));
+	free_parameter(0);
 	// ------------------------------------------
 
 	return 0;
@@ -47,7 +45,7 @@ void test_resnet(float x_, float y_, float w_, float h_){
 	cout << "start resnet" << endl;
 	clock_t begin = clock();
 
-	float out_prob = pass_RESNET(in_mat, 1);
+	float out_prob = pass_RESNET(in_mat, 0);
 
 	clock_t end = clock();
 	float elapsed_secs = float(end - begin) / CLOCKS_PER_SEC;
